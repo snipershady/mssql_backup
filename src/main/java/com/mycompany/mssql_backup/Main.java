@@ -6,7 +6,11 @@ package com.mycompany.mssql_backup;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import service.ArgumentParser;
 import service.BackupMSSQL;
 import service.PromptMessageHandler;
 
@@ -18,7 +22,20 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
-        int numberOfArguments = args.length;
+        //int numberOfArguments = args.length;
+        List<String> backupList = new LinkedList<>();
+        String config = null;
+
+        ArgumentParser ap = new ArgumentParser(args);
+        System.out.println(ap);
+        config = ap.getConfigFilePath();
+        backupList = ap.getDbList();
+
+        for (String s : backupList) {
+            //BackupMSSQL.backupDb(s);
+        }
+
+        /*
 
         if (numberOfArguments == 0) {
             System.out.println("Connessione al db in corso...");
@@ -68,7 +85,7 @@ public class Main {
                 System.exit(0);
             }
         }
-
+         */
     }
 
 }
