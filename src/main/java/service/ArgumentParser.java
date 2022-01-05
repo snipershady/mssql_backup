@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public final class ArgumentParser {
 
-    private Map<String, List<String>> argumentGraph;
+    private final Map<String, List<String>> argumentGraph;
 
     public ArgumentParser(String[] args) {
 
@@ -38,19 +38,58 @@ public final class ArgumentParser {
             }
             //System.out.println(args[i]);
         }
+    }
 
+    public boolean hasConfigFlag() {
+        return argumentGraph.containsKey("--config");
     }
 
     public String getConfigFilePath() {
-        return this.argumentGraph.get("--config").get(0);
+        return argumentGraph.containsKey("--config") ? argumentGraph.get("--config").get(0) : null;
     }
 
+    /**
+     *
+     * @return List of String with list of databases name
+     */
     public List<String> getDbList() {
-        return argumentGraph.get("--bl");
+        if (argumentGraph.containsKey("--bl")) {
+            return argumentGraph.get("--bl");
+        }
+
+        if (argumentGraph.containsKey("--backuplist")) {
+            return argumentGraph.get("--backuplist");
+        }
+
+        if (argumentGraph.containsKey("-bl")) {
+            return argumentGraph.get("-bl");
+        }
+
+        return null;
     }
-    
+
+    public boolean isBackupListsRequest() {
+        return argumentGraph.containsKey("--bl") || argumentGraph.containsKey("--backuplist") || argumentGraph.containsKey("-bl");
+    }
+
+    public boolean isHelpRequest() {
+        return argumentGraph.containsKey("--h") || argumentGraph.containsKey("--help") || argumentGraph.containsKey("-h") || argumentGraph.containsKey("-?") || argumentGraph.containsKey("--?");
+    }
+
+    public boolean isListsRequest() {
+        return argumentGraph.containsKey("--list") || argumentGraph.containsKey("--l") || argumentGraph.containsKey("-list");
+    }
+
+    public boolean isVersionRequest() {
+        return argumentGraph.containsKey("--v") || argumentGraph.containsKey("--version") || argumentGraph.containsKey("-v");
+    }
+
+    public boolean isRunAllDatabaseBackupsRequest() {
+        return argumentGraph.containsKey("--a") || argumentGraph.containsKey("--all") || argumentGraph.containsKey("-a");
+    }
+
     @Override
-    public String toString(){
-        return this.argumentGraph.toString();
+    public String toString() {
+        return argumentGraph.toString();
     }
 }
