@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import service.ArgumentParser;
-import service.BackupMSSQL;
+import service.MSSQLServiceManager;
 import service.PromptMessageHandler;
 
 /**
@@ -22,26 +22,48 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
-        //int numberOfArguments = args.length;
-        List<String> backupList = new LinkedList<>();
-        String config = null;
-
+        int numberOfArguments = args.length;
         ArgumentParser ap = new ArgumentParser(args);
-        System.out.println(ap);
-        config = ap.getConfigFilePath();
-        backupList = ap.getDbList();
-
-        for (String s : backupList) {
-            //BackupMSSQL.backupDb(s);
-        }
-
-        /*
+        
+        MSSQLServiceManager ms = new MSSQLServiceManager();
 
         if (numberOfArguments == 0) {
-            System.out.println("Connessione al db in corso...");
-            BackupMSSQL.getDbVersion();
-            System.out.println("Avvia lo script con la flag -h");
+            System.out.println("DB Connection in progress...");
+            ms.getDbVersion();
         }
+
+        if (ap.isHelpRequest()) {
+            PromptMessageHandler.displayHelpInformation();
+        }
+
+        if (ap.isVersionRequest()) {
+            PromptMessageHandler.displayVersion();
+        }
+
+        if (ap.hasConfigFlag()) {
+            String config;
+            config = ap.getConfigFilePath();
+            System.out.println(config);
+        }
+
+        if (ap.isListsRequest()) {
+            PromptMessageHandler.listAllDbOfTheServer();
+        }
+
+        if (ap.isRunAllDatabaseBackupsRequest()) {
+            ms.backupAll();
+            System.out.println("Operation Completed Succesfully");
+            System.exit(0);
+        }
+
+        if (ap.isBackupListsRequest()) {
+            ms.backupDb(ap.getDbList());
+            System.out.println("Operation Completed Succesfully");
+            System.exit(0);
+        }
+
+        System.out.println("\nPlease run command with -h or --help to dispay help menu\n");
+        /*
 
         // With 1 param arg we will backup all databases
         if (numberOfArguments == 1) {
@@ -54,15 +76,15 @@ public class Main {
             }
             if (param.compareToIgnoreCase("--all") == 0 || param.compareToIgnoreCase("-a") == 0) {
                 System.err.println("Backup of all DB accessible with your credentials");
-                LinkedList<String> ll = BackupMSSQL.getDbNamesFromMasterServer();
+                LinkedList<String> ll = MSSQLServiceManager.getDbNamesFromMasterServer();
                 ll.forEach(System.out::println);
-                BackupMSSQL.backupDb(ll);
+                MSSQLServiceManager.backupDb(ll);
                 System.exit(0);
             }
             if (param.compareToIgnoreCase("--list") == 0 || param.compareToIgnoreCase("-l") == 0) {
                 
                 System.err.println("List of all DB accessible with your credentials\n");
-                LinkedList<String> ll = BackupMSSQL.getDbNamesFromMasterServer();
+                LinkedList<String> ll = MSSQLServiceManager.getDbNamesFromMasterServer();
                 ll.forEach(System.out::println);
                 System.exit(0);
             }
@@ -80,7 +102,7 @@ public class Main {
                 }
                 
                 System.out.println("Backup of all listed db");
-                BackupMSSQL.backupDb(ll);
+                MSSQLServiceManager.backupDb(ll);
                 System.out.println("Operation Completed Succesfully");
                 System.exit(0);
             }

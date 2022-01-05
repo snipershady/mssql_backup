@@ -1,7 +1,7 @@
+service\MSSQLServiceManager.class
 service\ArgumentParser.class
 service\MSSQLConnect.class
 service\PromptMessageHandler.class
 com\mycompany\mssql_backup\Main.class
-service\BackupMSSQL.class
 service\PropertiesParser.class
 service\DateHelper.class

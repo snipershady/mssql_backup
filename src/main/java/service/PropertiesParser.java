@@ -33,7 +33,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty(key); //Get the field db_name from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
              System.out.println("Please confiure a proper file inside your config folder");
              System.exit(0);
         }
@@ -58,7 +58,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("db_name"); //Get the field db_name from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
              System.out.println("Please confiure a proper file inside your config folder");
              System.exit(0);
         }
@@ -81,10 +81,10 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
             System.exit(0);
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
             System.exit(0);
         }
     }
@@ -106,7 +106,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("db_host"); //Get the field db_host from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
         }
 
     return result;
@@ -127,9 +127,9 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         }
     }
     
@@ -150,7 +150,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("db_pass"); //Get the field db_pass from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
         }
 
     return result;
@@ -171,9 +171,9 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         }
     }
     
@@ -195,7 +195,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("db_user"); //Get the field db_user from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
         }
 
     return result;
@@ -216,9 +216,9 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         }
     }
     
@@ -238,7 +238,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("db_port"); //Get the field db_port from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
         }
 
     return result;
@@ -259,9 +259,9 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore:  "+e.getMessage());
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         }
     }
    
@@ -282,7 +282,7 @@ public final class PropertiesParser {
             p.load(fIn);
             result = p.getProperty("server_path"); //Get the field server_path from Property file
         } catch (IOException e) {
-             System.err.println("Errore"+e.getMessage());
+             System.err.println("Errore: "+e.getMessage());
         }
 
     return result;
@@ -303,26 +303,26 @@ public final class PropertiesParser {
                  p.store(fOut, null);
              }
         } catch (FileNotFoundException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         } catch (IOException e) {
-            System.err.println("Errore"+e.getMessage());
+            System.err.println("Errore: "+e.getMessage());
         }
     }
     
-    public static String getLicenseIntro() throws FileNotFoundException, IOException {
-        return getValue("license_intro");
-    }
-    
-    public static String getAuthors() throws FileNotFoundException, IOException {
-        return getValue("authors");
-    }
-    
-    public static String getLicenseFooter() throws FileNotFoundException, IOException {
-        return getValue("license_footer");
-    }
-    
-    public static String getVersion()throws FileNotFoundException, IOException {
-        return getValue("version") + "." + getValue("build");
-    }
+//    public static String getLicenseIntro() throws FileNotFoundException, IOException {
+//        return getValue("license_intro");
+//    }
+//    
+//    public static String getAuthors() throws FileNotFoundException, IOException {
+//        return getValue("authors");
+//    }
+//    
+//    public static String getLicenseFooter() throws FileNotFoundException, IOException {
+//        return getValue("license_footer");
+//    }
+//    
+//    public static String getVersion()throws FileNotFoundException, IOException {
+//        return getValue("version") + "." + getValue("build");
+//    }
     
 }
