@@ -15,7 +15,7 @@ public class PromptMessageHandler {
         System.out.println(SoftwareInformation.licenseHeader);
         System.out.println(SoftwareInformation.authors);
         System.out.println(SoftwareInformation.licenseFooter);
-        System.out.println("VERSION: " + SoftwareInformation.version+"."+SoftwareInformation.build);
+        System.out.println("VERSION: " + SoftwareInformation.version + "." + SoftwareInformation.build);
         System.out.println("*******************************************************");
         System.out.println("Usage: java -jar mssqlbackup.jar [OPTION]");
         System.out.println("Usage: java -jar mssqlbackup.jar -bl [DBNAME]... [DBNAME]...");
@@ -28,7 +28,6 @@ public class PromptMessageHandler {
         System.out.println("-a \t --all\t\t\t to Backup of all DB accessible with your credentials");
         System.out.println("-l \t --list\t\t\t to List all DB accessible with your credentials");
         System.out.println("-bl\t --backuplist\t\t to Backup a specified list all DB accessible with your credentials\n");
-        System.exit(0);
     }
 
     public static void displayVersion() throws IOException {
@@ -36,9 +35,8 @@ public class PromptMessageHandler {
         System.out.println(SoftwareInformation.licenseHeader);
         System.out.println(SoftwareInformation.authors);
         System.out.println(SoftwareInformation.licenseFooter);
-        System.out.println("VERSION: " + SoftwareInformation.version+"."+SoftwareInformation.build);
+        System.out.println("VERSION: " + SoftwareInformation.version + "." + SoftwareInformation.build);
         System.out.println("*******************************************************");
-        System.exit(0);
     }
 
     public static void listAllDbOfTheServer() throws SQLException, ClassNotFoundException, IOException {
@@ -46,6 +44,5 @@ public class PromptMessageHandler {
         MSSQLServiceManager ms = new MSSQLServiceManager();
         LinkedList<String> ll = ms.getDbNamesFromMasterServer();
         ll.forEach(System.out::println);
-        System.exit(0);
     }
 }
