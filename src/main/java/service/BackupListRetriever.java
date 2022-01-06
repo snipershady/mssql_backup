@@ -13,10 +13,19 @@ public class BackupListRetriever {
 
     private ArgumentParser ap;
 
+    /**
+     * 
+     * @param ap ap ArgumentParser instance
+     */
     public BackupListRetriever(ArgumentParser ap) {
         this.ap = ap;
     }
 
+    /**
+     * 
+     * @return LinkedList of String with names of db schema to download, requested by user from args or config.properties file
+     * @throws IOException 
+     */
     public List<String> getDbList() throws IOException {
 
         if (!this.ap.getDbList().isEmpty()) {
