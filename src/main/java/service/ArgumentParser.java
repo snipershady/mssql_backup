@@ -48,6 +48,14 @@ public final class ArgumentParser {
     }
 
     /**
+     * 
+     * @return true if arguments contain the flag "--start"
+     */
+    public boolean isInitRequest() {
+        return argumentGraph.containsKey("--init");
+    }
+
+    /**
      *
      * @return filename and path of a custom config.properties file
      */

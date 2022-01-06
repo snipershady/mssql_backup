@@ -10,6 +10,8 @@ import service.ArgumentParser;
 import service.BackupListRetriever;
 import service.MSSQLServiceManager;
 import service.PromptMessageHandler;
+import service.PropertiesInizializer;
+import service.PropertiesParser;
 
 /**
  *
@@ -29,14 +31,20 @@ public class Main {
         int numberOfArguments = args.length;
         ArgumentParser ap = new ArgumentParser(args);
         
+        if (ap.isInitRequest()) {
+            PropertiesInizializer pi = new PropertiesInizializer();
+            pi.init();
+            System.exit(0);
+        }
+        
         MSSQLServiceManager ms = new MSSQLServiceManager();
-
+        
         if (numberOfArguments == 0) {
             System.out.println("DB Connection in progress...");
             ms.getDbVersion();
             System.exit(0);
         }
-
+       
         if (ap.isHelpRequest()) {
             PromptMessageHandler.displayHelpInformation();
             System.exit(0);
@@ -72,7 +80,7 @@ public class Main {
         }
 
         System.out.println("\nPlease run command with -h or --help to dispay help menu\n");
-      
+
     }
 
 }

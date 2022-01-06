@@ -45,7 +45,7 @@ public final class PropertiesParser {
             result = p.getProperty(key); //Get the field "key" from Property file
         } catch (IOException e) {
             System.err.println("Errore: " + e.getMessage());
-            System.out.println("Please configure a proper file inside your config folder");
+            System.out.println("Please configure a proper file inside your config folder or run command with flag --init");
             System.exit(0);
         }
 
@@ -62,7 +62,7 @@ public final class PropertiesParser {
         try {
             Properties p = new Properties();
             p.setProperty(key, value);
-
+          
             File file = new File(this.propfilename);
             try ( FileOutputStream fOut = new FileOutputStream(file)) {
                 p.store(fOut, null);
@@ -76,7 +76,24 @@ public final class PropertiesParser {
         }
         return true;
     }
-
+    
+    
+    public boolean initAllRequiredParameters(Properties p){
+        try {
+            File file = new File(this.propfilename);
+            try ( FileOutputStream fOut = new FileOutputStream(file)) {
+                p.store(fOut, null);
+            } catch (FileNotFoundException e) {
+                System.err.println("Errore: " + e.getMessage());
+                return false;
+            }
+        } catch (IOException e) {
+            System.err.println("Errore: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
     /**
      *
      * @return db_name
@@ -113,9 +130,57 @@ public final class PropertiesParser {
      * @return db_host
      */
     public boolean setDbHost(String dBhost) {
-        return this.setParameter("db_host", dBhost);
+        return this.setParameter("db_host", dBhost.trim());
+    }
+    
+     /**
+     *
+     * @param dbPass
+     * @return db_pass
+     */
+    public boolean setDbPass(String dbPass) {
+        return this.setParameter("db_pass", dbPass.trim());
+    }
+    
+     /**
+     *
+     * @param dbUser
+     * @return db_user
+     */
+    public boolean setDbUser(String dbUser) {
+        return this.setParameter("db_user", dbUser.trim());
+    }
+    
+    /**
+     *
+     * @param dbPort
+     * @return db_port
+     */
+    public boolean setDbPort(String dbPort) {
+        return this.setParameter("db_port", dbPort.trim());
+    }
+    
+    /**
+     *
+     * @param serverPath
+     * @return server_path
+     */
+    public boolean setServerPath(String serverPath) {
+        return this.setParameter("server_path", serverPath.trim());
+    }
+    
+     /**
+     *
+     * @param backupListCSV
+     * @return backup_list
+     */
+    public boolean setBackupList(String backupListCSV) {
+        return this.setParameter("backup_list", backupListCSV.trim());
     }
 
+    
+    
+    
     /**
      *
      * @return db_pass

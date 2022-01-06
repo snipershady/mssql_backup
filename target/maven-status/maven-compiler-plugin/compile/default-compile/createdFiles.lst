@@ -3,6 +3,7 @@ service\ArgumentParser.class
 service\MSSQLConnect.class
 service\PromptMessageHandler.class
 com\mycompany\mssql_backup\Main.class
+service\PropertiesInizializer.class
 service\BackupListRetriever.class
 service\SoftwareInformation.class
 service\PropertiesParser.class
