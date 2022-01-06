@@ -18,14 +18,21 @@ public final class PropertiesParser {
     // Path and filename to parse
     private final String propfilename;
 
-    public PropertiesParser(){
+    public PropertiesParser() {
         this.propfilename = "config/config.properties";
     }
-    
+
     public PropertiesParser(String propFilename) {
         this.propfilename = propFilename;
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     private String getValue(String key) throws FileNotFoundException, IOException {
 
         String result = null;
@@ -45,6 +52,12 @@ public final class PropertiesParser {
         return result;
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     * @return true on success
+     */
     private boolean setParameter(String key, String value) {
         try {
             Properties p = new Properties();
@@ -53,20 +66,21 @@ public final class PropertiesParser {
             File file = new File(this.propfilename);
             try ( FileOutputStream fOut = new FileOutputStream(file)) {
                 p.store(fOut, null);
+            } catch (FileNotFoundException e) {
+                System.err.println("Errore: " + e.getMessage());
+                return false;
             }
-        } catch (FileNotFoundException e) {
-            System.err.println("Errore: " + e.getMessage());
-            System.exit(0);
         } catch (IOException e) {
             System.err.println("Errore: " + e.getMessage());
-            System.exit(0);
+            return false;
         }
         return true;
     }
 
     /**
      *
-     * @return @throws FileNotFoundException
+     * @return db_name
+     * @throws FileNotFoundException
      * @throws IOException
      */
     public String getDbName() throws FileNotFoundException, IOException {
@@ -85,7 +99,8 @@ public final class PropertiesParser {
 
     /**
      *
-     * @return @throws FileNotFoundException
+     * @return db_host
+     * @throws FileNotFoundException
      * @throws IOException
      */
     public String getDbHost() throws FileNotFoundException, IOException {
@@ -95,7 +110,7 @@ public final class PropertiesParser {
     /**
      *
      * @param dBhost
-     * @return
+     * @return db_host
      */
     public boolean setDbHost(String dBhost) {
         return this.setParameter("db_host", dBhost);
@@ -103,7 +118,8 @@ public final class PropertiesParser {
 
     /**
      *
-     * @return @throws FileNotFoundException
+     * @return db_pass
+     * @throws FileNotFoundException
      * @throws IOException
      */
     public String getDbPass() throws FileNotFoundException, IOException {
@@ -111,9 +127,9 @@ public final class PropertiesParser {
     }
 
     /**
-     * 
-     * @return
-     * @throws IOException 
+     *
+     * @return db_user
+     * @throws IOException
      */
     public String getDbUser() throws IOException {
         return this.getValue("db_user");
@@ -130,15 +146,23 @@ public final class PropertiesParser {
 
     /**
      *
-     * @return @throws FileNotFoundException
+     * @return server path where whill be stored the backup files
+     * @throws FileNotFoundException
      * @throws IOException
      */
     public String getServerPath() throws FileNotFoundException, IOException {
         return this.getValue("server_path");
 
     }
-    
-     public String getDbListCsv() throws FileNotFoundException, IOException {
+
+    /**
+     *
+     * @return csv String with name of db schema requested by user into
+     * config.properties file
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public String getDbListCsv() throws FileNotFoundException, IOException {
         return this.getValue("backuplist");
     }
 

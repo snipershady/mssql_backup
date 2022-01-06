@@ -1,4 +1,3 @@
-
 package service;
 
 import java.util.HashMap;
@@ -14,6 +13,11 @@ public final class ArgumentParser {
 
     private final Map<String, List<String>> argumentGraph;
 
+    /**
+     * Parse args into a Graph
+     *
+     * @param args
+     */
     public ArgumentParser(String[] args) {
 
         this.argumentGraph = new HashMap<>();
@@ -24,7 +28,6 @@ public final class ArgumentParser {
         List<String> tmp;
         for (i = 0; i < numberOfArguments; i++) {
             if (args[i].contains("-")) {
-                //System.out.println("trattino");
                 j = i + 1;
                 tmp = new LinkedList<>();
                 while (j < numberOfArguments && !args[j].contains("-")) {
@@ -33,14 +36,21 @@ public final class ArgumentParser {
                 }
                 this.argumentGraph.put(args[i], tmp);
             }
-            //System.out.println(args[i]);
         }
     }
 
+    /**
+     *
+     * @return true if arguments contain the flag "--config"
+     */
     public boolean hasConfigFlag() {
         return argumentGraph.containsKey("--config");
     }
 
+    /**
+     *
+     * @return filename and path of a custom config.properties file
+     */
     public String getConfigFilePath() {
         return argumentGraph.containsKey("--config") ? argumentGraph.get("--config").get(0) : null;
     }
@@ -65,22 +75,42 @@ public final class ArgumentParser {
         return null;
     }
 
+    /**
+     * @return true if arguments contain the flag "--bl" or "--backuplist" or
+     * "-bl"
+     */
     public boolean isBackupListsRequest() {
         return argumentGraph.containsKey("--bl") || argumentGraph.containsKey("--backuplist") || argumentGraph.containsKey("-bl");
     }
 
+    /**
+     * @return true if arguments contain the flag "--h" or "--help" or "-h" or
+     * "--?" or "-?"
+     */
     public boolean isHelpRequest() {
         return argumentGraph.containsKey("--h") || argumentGraph.containsKey("--help") || argumentGraph.containsKey("-h") || argumentGraph.containsKey("-?") || argumentGraph.containsKey("--?");
     }
 
+    /**
+     *
+     * @return true if arguments contain the flag "--list" or "-list" or "-l"
+     */
     public boolean isListsRequest() {
         return argumentGraph.containsKey("--list") || argumentGraph.containsKey("--l") || argumentGraph.containsKey("-list");
     }
 
+    /**
+     *
+     * @return true if arguments contain the flag "--version" or "-v" or "--v"
+     */
     public boolean isVersionRequest() {
         return argumentGraph.containsKey("--v") || argumentGraph.containsKey("--version") || argumentGraph.containsKey("-v");
     }
 
+    /**
+     *
+     * @return true if arguments contain the flag "--all" or "-a" or "--a"
+     */
     public boolean isRunAllDatabaseBackupsRequest() {
         return argumentGraph.containsKey("--a") || argumentGraph.containsKey("--all") || argumentGraph.containsKey("-a");
     }
