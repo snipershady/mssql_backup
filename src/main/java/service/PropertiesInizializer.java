@@ -1,6 +1,10 @@
-
 package service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
@@ -11,9 +15,11 @@ public class PropertiesInizializer {
 
     /**
      * Create a new config.properties files with standard required params
+     *
      * @return boolean
      */
-    public boolean init() {
+    public boolean init() throws IOException {
+        this.initConfigDirectory();
         Properties p = new Properties();
         p.setProperty("db_user", "sa");
         p.setProperty("db_pass", "WRITE_YOUR_PASSWORD");
@@ -25,5 +31,18 @@ public class PropertiesInizializer {
 
         PropertiesParser pp = new PropertiesParser();
         return pp.initAllRequiredParameters(p);
+    }
+
+    private void initConfigDirectory() throws IOException {
+        File f = new File("config");
+        if (!f.exists() || !f.isDirectory()) {
+            try {
+                Path path = Paths.get("config");
+                Files.createDirectories(path);
+                System.out.println("Directory is created!");
+            } catch (IOException e) {
+                System.err.println("Failed to create directory!" + e.getMessage());
+            }
+        }
     }
 }
