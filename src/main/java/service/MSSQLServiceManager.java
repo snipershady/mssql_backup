@@ -17,12 +17,13 @@ public class MSSQLServiceManager {
     private final String serverPath;
 
     /**
-     * Private constructor
+     * public constructor
      *
      * @throws java.io.IOException
      */
     public MSSQLServiceManager() throws IOException {
-        this.serverPath = PropertiesParser.getServerPath();
+        PropertiesParser pp = new PropertiesParser();
+        this.serverPath = pp.getServerPath();
     }
 
     /**
