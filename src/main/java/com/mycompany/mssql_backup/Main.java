@@ -17,6 +17,13 @@ import service.PromptMessageHandler;
  */
 public class Main {
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
         int numberOfArguments = args.length;
