@@ -1,12 +1,21 @@
+- [mssql_backup](#mssql_backup)
+  - [Configuration file](#configuration-file)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [How it works](#how-it-works)
+  - [Schedule a job](#schedule-a-job)
+  - [Authors](#authors)
+
+
 # mssql_backup
-An useful tool to run backup on your SQL Server© 
+A handy tool to run a backup on your  **SQL Server**® 
 
 With this **open source** tool, you can easly run backup of your sql server databases.
-It's compiled with Java 11 (LTS) and you have to run it via CLI.
-Tt works perfectly as on a Linux system as on Windows and you can install Oracle Java or open-JDK-11.
+It's compiled with Java® 11 (LTS) and you have to run it via CLI.
+It works perfectly as on a Linux system as on Windows and you can install Oracle Java or open-jdk-11.
 
 ## Configuration file
-It's necessary to configure a config.properties file with administrative database credentials.
+It's necessary to configure a **config.properties** file with administrative database credentials.
 It's safe to run as **user** the jar file, but database credentials need admin privileges.
 
 That's a sample
@@ -20,21 +29,21 @@ db_port=1433
 db_name=master
 
 #ServerPath 
-server_path=Z:/backup # or server_path=/home/backup if you run on linux
+server_path=C:/backup # or server_path=/home/backup if you run on linux
 backuplist=
 ```
 
 ## Requirements
-Java© 11
+Java® 11
 
-See Oracle©  website
+See Oracle®  website
 https://www.oracle.com/it/java/technologies/javase/jdk11-archive-downloads.html
 
 on linux (Debian or Ubuntu)
 
 ```bash
 sudo apt-get update
-sudo apt-get intall default-jdk
+sudo apt-get intall openjdk-11-jdk
 ```
 
 
@@ -82,7 +91,7 @@ DB Connection in progress...
 VERSIONE: Microsoft SQL Server 2014 (SP3-GDR) (KB4583463) - 12.0.6164.21 (X64)
         Nov  1 2020 04:25:14
         Copyright (c) Microsoft Corporation
-        Enterprise Edition (64-bit) on Windows©  NT 6.3 <X64> (Build 9600: )
+        Enterprise Edition (64-bit) on Windows®  NT 6.3 <X64> (Build 9600: )
 ```
 
 If the server informations are displayed, you are ready to run your backups.
@@ -112,7 +121,7 @@ java -jar mssql_backup-2.0-cli-lite-jar-with-dependencies.jar --bl
 ```
 
 ## Schedule a job
-I do not want to explain hot windows scheduler works...
+I do not want to explain how windows scheduler works...
 but I can remind to you how can create a cronjob on a Linux Os
 
 to create a new scheduling
