@@ -9,7 +9,7 @@ import java.util.Properties;
 
 /**
  *
- * @author shady
+ * @author Stefano Perrini
  */
 public class PropertiesInizializer {
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * Connection to RDBMS MSSQL useing MSSQL official jdbc driver
  *
- * @author Stefano Perrini <perrini.stefano@gmail.com>
+ * @author Stefano Perrini
  *
  */
 public final class MSSQLConnect {

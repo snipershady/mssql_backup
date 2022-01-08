@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  *
- * @author shady
+ * @author Stefano Perrini
  */
 public class BackupListRetriever {
 

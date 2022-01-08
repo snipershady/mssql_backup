@@ -3,7 +3,7 @@ package service;
 
 /**
  *
- * @author shady
+ * @author Stefano Perrini
  */
 public final class SoftwareInformation {
     public static final String version = "2.0";

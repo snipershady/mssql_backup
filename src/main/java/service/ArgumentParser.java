@@ -7,7 +7,8 @@ import java.util.Map;
 
 /**
  *
- * @author shady
+ * @author Stefano Perrini
+ * @author Damiano Improta
  */
 public final class ArgumentParser {
 

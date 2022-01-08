@@ -120,7 +120,6 @@ public class MSSQLServiceManager {
             while (rs.next()) {
                 if (rs.getString("name").compareToIgnoreCase("tempdb") != 0 && rs.getString("name").compareToIgnoreCase("master") != 0) {   //temp and master cannot be backupped or restored
                     linkedlist.add(rs.getString("name"));
-                    //System.out.println("NomeDb: " + rs.getString("name"));
                 }
             }
 

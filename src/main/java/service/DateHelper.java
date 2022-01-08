@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Stefano Perrini <perrini.stefano@gmail.com>
+ * @author Stefano Perrini
  */
 public final class DateHelper {
 
