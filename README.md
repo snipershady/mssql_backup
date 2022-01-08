@@ -121,8 +121,7 @@ java -jar mssql_backup-2.0-cli-lite-jar-with-dependencies.jar --bl
 ```
 
 ## Schedule a job
-I do not want to explain how windows scheduler works...
-but I can remind to you how can create a cronjob on a Linux Os
+I do not want to explain how windows scheduler works... but I can remind you how to create a cron job on a Linux OS.
 
 to create a new scheduling
 ```bash
