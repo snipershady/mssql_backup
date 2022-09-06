@@ -128,9 +128,9 @@ to create a new scheduling
 crontab -e
 ```
 
-Example of scheduling every 19.00am and every 8.00pm backup for every database on your server
+Example of scheduling every 9.00am and every 8.00pm backup for every database on your server
 ```bash
-0 10,20 * * * java -jar /path/with/the/tool/mssql_backup-2.0-cli-lite-jar-with-dependencies.jar --a
+0 9,20 * * * java -jar /path/with/the/tool/mssql_backup-2.0-cli-lite-jar-with-dependencies.jar --a
 ```
 
 ## Authors
